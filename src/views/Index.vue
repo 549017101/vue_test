@@ -43,7 +43,7 @@
 			  -->
 			  <el-menu router :default-openeds="['0']"> <!--index值就是下面遍历出来的索引值,是从0开始的-->
 				  <!--index取出来的索引是数值,拼接一个空串,转为字符串-->
-				  <el-submenu v-for="(item,index) in $router.options.routes" :index="index + ''">
+				  <el-submenu v-for="(item,index) in $router.options.routes" :index="index + ''" v-if="item.show">
 					  <template slot="title">
 						  <i class="el-icon-message"></i>
 						  {{ item.name }}

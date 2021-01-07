@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Book from "@/views/Book";
-import PageOne from "@/views/PageOne";
-import PageTwo from "@/views/PageTwo";
-import PageThree from "@/views/PageThree";
-import PageFour from "@/views/PageFour";
+import BookManage from "@/views/BookManage"
+import BookAdd from "@/views/BookAdd";
+import BookUpdate from "@/views/BookUpdate";
 import Index from "@/views/Index";
 
 Vue.use(VueRouter)
@@ -12,43 +10,32 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'router导航1',
+    name: '图书管理',
+    show: true,  //show属性表示当前路由要不要被vue遍历
     component: Index,
-    redirect:'/page1',
+    redirect:'/bookManage',
     children:[
       {
-        path: '/page1',
-        name: '页面1',
-        component: PageOne
+        path: '/bookManage',
+        name: '查询图书',
+        component: BookManage
       },
       {
-        path: '/page2',
-        name: '页面2',
-        component: PageTwo
+        path: '/addBook',
+        name: '添加图书',
+        component: BookAdd
       }
     ]
   },
   {
-    path: '/nav',
-    name: 'router导航2',
-    component: Index,
-    children:[
-      {
-        path: '/page3',
-        name: '页面3',
-        component: PageThree
-      },
-      {
-        path: '/page4',
-        name: '页面4',
-        component: PageFour
-      }
-    ]
+    path: '/update',
+    component: BookUpdate,
+    show:false
   },
-  {
-    path:'/book',
-    component: Book
-  }
+  // {
+  //   path:'/book',
+  //   component: Book
+  // }
 ]
 
 const router = new VueRouter({
